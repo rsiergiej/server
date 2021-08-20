@@ -16,14 +16,9 @@ import javax.validation.constraints.Size;
 public class User {
     @Id
     @Column(nullable = false)
-    @TableGenerator(name = "name_table_generate",
-            table = "table_generate_id",
-            valueColumnName = "col_value",
-            pkColumnName = "col_id",
-            pkColumnValue = "nextUserId",
-            initialValue = 0,
-            allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.TABLE, generator = "name_table_generate")
+    @TableGenerator(name = "table_generate_id", table = "generate_id", pkColumnValue = "userId",
+            initialValue = 0, allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.TABLE, generator = "table_generate_id")
     private Long id;
 
     @Size(min=5, max=32)
